@@ -1,0 +1,152 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Reserva {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  data          DateTime
+  hora          DateTime
+  numeroPessoas Int
+  nome          String?
+  telefone      BigInt
+  email         String
+  deleted       Boolean  @default(false)
+  profileId     String?
+  profile       Profile? @relation(fields: [profileId], references: [id])
+}
+
+// -----Autenticação para marcar reserva e verificar os dados --------------------
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  password  String
+  deleted   Boolean  @default(false)
+  profileId String?
+  profile   Profile? @relation(fields: [profileId], references: [id])
+}
+
+model Profile {
+  id           String    @id @default(uuid())
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  firstName    String
+  lastName     String?
+  telefone     Int
+  emailAuth    String
+  passwordAuth String
+  reservaId    String?
+  reserva      Reserva[]
+  User         User[]
+  deleted      Boolean   @default(false)
+}
+
+model Entradas {
+  id             String    @id @default(uuid())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  paoDeAlho      Int
+  humusCenoura   Int
+  folhadoAlheira Int
+  deleted        Boolean   @default(false)
+  pedidos        Pedidos[]
+}
+
+model PratosPrincipais {
+  id                String    @id @default(uuid())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  risottoCogumelos  Int
+  lasanhaLegumes    Int
+  raviolisBeterraba Int
+  deleted           Boolean   @default(false)
+  pedidos           Pedidos[]
+}
+
+model Sobremesas {
+  id                String    @id @default(uuid())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  tiramisu          Int
+  cheesecakeMorango Int
+  mousseLimao       Int
+  deleted           Boolean   @default(false)
+  pedidos           Pedidos[]
+}
+
+model Bebidas {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  agua          Int
+  refrigerantes Int
+  sumoNatural   Int
+  cerveja       Int
+  vinhoCopo     Int
+  vinhoGarrafa  Int
+  deleted       Boolean   @default(false)
+  pedidos       Pedidos[]
+}
+
+model Pedidos {
+  id                 String           @id @default(uuid())
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  mesaId             String
+  mesa               Mesa             @relation(fields: [mesaId], references: [id])
+  entradasId         String
+  entradas           Entradas         @relation(fields: [entradasId], references: [id])
+  pratosPrincipaisId String
+  pratosPrincipais   PratosPrincipais @relation(fields: [pratosPrincipaisId], references: [id])
+  sobremesasId       String
+  sobremesas         Sobremesas       @relation(fields: [sobremesasId], references: [id])
+  bebidasId          String
+  bebidas            Bebidas          @relation(fields: [bebidasId], references: [id])
+  preco              Int
+  deleted            Boolean          @default(false)
+  Cozinha            Cozinha[]
+  Conta              Conta[]
+}
+
+model Mesa {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  mesa1     Int
+  mesa2     Int
+  mesa3     Int
+  mesa4     Int
+  mesa5     Int
+  deleted   Boolean   @default(false)
+  pedidos   Pedidos[]
+}
+
+model Cozinha {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  pedidosId String
+  pedidos   Pedidos  @relation(fields: [pedidosId], references: [id])
+  deleted   Boolean  @default(false)
+}
+
+model Conta {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  pedidosId String
+  pedidos   Pedidos  @relation(fields: [pedidosId], references: [id])
+  deleted   Boolean  @default(false)
+}
