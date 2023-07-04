@@ -1,247 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aplicação Pedidos</title>
-    <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+  </head>
 
-<body>
-<div>
-    
-<h1>Escolher Mesa</h1>
-<label for="teams"></label>
-    <select id="team" onchange="selectTeam()">
+  <body>
+    <div>
+      <h1>Escolher Mesa</h1>
+      <label for="teams"></label>
+      <select id="team" onchange="selectTeam()">
         <option value="Mesa 1">Mesa 1</option>
         <option value="Mesa 2">Mesa 2</option>
         <option value="Mesa 3">Mesa 3</option>
         <option value="Mesa 4" selected>Mesa 4</option>
         <option value="Mesa 5">Mesa 5</option>
-    </select>
-    <br>
+      </select>
+      <br />
 
-    <div id="info">
-    </div>
-  
+      <div id="info"></div>
 
+      <!-- Tab content -->
+      <h1>Selecionar Produtos</h1>
 
-<!-- Tab content -->
-<h1>Selecionar Produtos</h1>
+      <div class="grid">
+        <div class="list">
+          <h2>Entradas</h2>
+          <div class="align">
+            <div class="item" data-key="1">
+              <div class="content">
+                <div class="title">Pão de Alho</div>
+                <div class="price">4.90€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(1)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
 
-  <div class="grid">
-  <div class="list">
-    <h2>Entradas</h2>
-    <div class="align">
-      <div class="item" data-key="1">
-          <div class="content">
-              <div class="title">Pão de Alho</div>
-              <div class="price">4.90€</div>
-              <input type="number" class="count" min="1" value="1">
-              <button class="add">Adicionar conta</button>
-              <button class="remove" onclick="Remove(1)"><i class="fa-solid fa-trash-can"></i></button>
+            <div class="item" data-key="2">
+              <div class="content">
+                <div class="title">Humus com Cenoura</div>
+                <div class="price">5.50€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(2)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="3">
+              <div class="content">
+                <div class="title">Folhado de Alheira</div>
+                <div class="price">7.70€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(3)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
           </div>
-      </div>
 
-      <div class="item" data-key="2">
-        <div class="content">
-            <div class="title">Humus com Cenoura</div>
-            <div class="price">5.50€</div>
-            <input type="number" class="count" min="1" value="1">
-            <button class="add">Adicionar conta</button>
-            <button class="remove" onclick="Remove(2)"><i class="fa-solid fa-trash-can"></i></button>
+          <h2>Prato Principal</h2>
+          <div class="align">
+            <div class="item" data-key="4">
+              <div class="content">
+                <div class="title">Risotto de Cogumelos</div>
+                <div class="price">15.90€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(4)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="5">
+              <div class="content">
+                <div class="title">Lasanha de Legumes</div>
+                <div class="price">13.50€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(5)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="6">
+              <div class="content">
+                <div class="title">Raviolis de Beterraba</div>
+                <div class="price">14.70€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(6)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <h2>Sobremesas</h2>
+          <div class="align">
+            <div class="item" data-key="7">
+              <div class="content">
+                <div class="title">Tiramisu</div>
+                <div class="price">3.40€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(7)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="8">
+              <div class="content">
+                <div class="title">Cheesecake Morango</div>
+                <div class="price">4.50€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(8)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="9">
+              <div class="content">
+                <div class="title">Mousse Limão</div>
+                <div class="price">4.00€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(9)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <h2>Bebidas</h2>
+          <div class="align">
+            <div class="item" data-key="10">
+              <div class="content">
+                <div class="title">Água</div>
+                <div class="price">0.90€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(10)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="11">
+              <div class="content">
+                <div class="title">Refrigerantes</div>
+                <div class="price">1.50€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(11)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="12">
+              <div class="content">
+                <div class="title">Sumo Natural</div>
+                <div class="price">2.00€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(12)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="13">
+              <div class="content">
+                <div class="title">Cerveja</div>
+                <div class="price">1.90€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(13)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="14">
+              <div class="content">
+                <div class="title">Vinho Copo</div>
+                <div class="price">2.50€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(14)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="item" data-key="15">
+              <div class="content">
+                <div class="title">Vinho Garrafa</div>
+                <div class="price">12.00€</div>
+                <input type="number" class="count" min="1" value="1" />
+                <button class="add">Adicionar conta</button>
+                <button class="remove" onclick="Remove(15)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="cart">
+          <div class="name">Pedido</div>
+          <div class="listCart"></div>
+
+          <button class="fecho2">Cancelar</button>
+          <button class="fecho" onclick="myFunction()">
+            Enviar para Cozinha
+          </button>
+          <button class="fecho" id="myBtn">Fechar Conta</button>
+
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <h1>O valor total do pedido é de:</h1>
+              <br />
+              <div id="totalPrice" class="total-price">0.00€</div>
+              <span class="close"
+                ><button class="fecho2">Cancelar</button></span
+              >
+              <span class="close"
+                ><button class="fecho">Pagamento Efetuado!</button></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="item" data-key="3">
-      <div class="content">
-          <div class="title">Folhado de Alheira</div>
-          <div class="price">7.70€</div>
-          <input type="number" class="count" min="1" value="1">
-          <button class="add">Adicionar conta</button>
-          <button class="remove" onclick="Remove(3)"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-  </div>
-    
-</div>
-
-<h2>Prato Principal</h2>
-<div class="align">
-  <div class="item" data-key="4">
-      <div class="content">
-          <div class="title">Risotto de Cogumelos</div>
-          <div class="price">15.90€</div>
-          <input type="number" class="count" min="1" value="1">
-          <button class="add">Adicionar conta</button>
-          <button class="remove" onclick="Remove(4)"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-  </div>
-
-  <div class="item" data-key="5">
-    <div class="content">
-        <div class="title">Lasanha de Legumes</div>
-        <div class="price">13.50€</div>
-        <input type="number" class="count" min="1" value="1">
-        <button class="add">Adicionar conta</button>
-        <button class="remove" onclick="Remove(5)"><i class="fa-solid fa-trash-can"></i></button>
-    </div>
-</div>
-
-<div class="item" data-key="6">
-  <div class="content">
-      <div class="title">Raviolis de Beterraba</div>
-      <div class="price">14.70€</div>
-      <input type="number" class="count" min="1" value="1">
-      <button class="add">Adicionar conta</button>
-      <button class="remove" onclick="Remove(6)"><i class="fa-solid fa-trash-can"></i></button>
-  </div>
-</div>
-
-</div>
-
-<h2>Sobremesas</h2>
-<div class="align">
-  <div class="item" data-key="7">
-      <div class="content">
-          <div class="title">Tiramisu</div>
-          <div class="price">3.40€</div>
-          <input type="number" class="count" min="1" value="1">
-          <button class="add">Adicionar conta</button>
-          <button class="remove" onclick="Remove(7)"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-  </div>
-
-  <div class="item" data-key="8">
-    <div class="content">
-        <div class="title">Cheesecake Morango</div>
-        <div class="price">4.50€</div>
-        <input type="number" class="count" min="1" value="1">
-        <button class="add">Adicionar conta</button>
-        <button class="remove" onclick="Remove(8)"><i class="fa-solid fa-trash-can"></i></button>
-    </div>
-</div>
-
-<div class="item" data-key="9">
-  <div class="content">
-      <div class="title">Mousse Limão</div>
-      <div class="price">4.00€</div>
-      <input type="number" class="count" min="1" value="1">
-      <button class="add">Adicionar conta</button>
-      <button class="remove" onclick="Remove(9)"><i class="fa-solid fa-trash-can"></i></button>
-  </div>
-</div>
-
-</div>
-      
-<h2>Bebidas</h2>
-<div class="align">
-
-  <div class="item" data-key="10">
-      <div class="content">
-          <div class="title">Água</div>
-          <div class="price">0.90€</div>
-          <input type="number" class="count" min="1" value="1">
-          <button class="add">Adicionar conta</button>
-          <button class="remove" onclick="Remove(10)"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-  </div>
-
-  <div class="item" data-key="11">
-    <div class="content">
-        <div class="title">Refrigerantes</div>
-        <div class="price">1.50€</div>
-        <input type="number" class="count" min="1" value="1">
-        <button class="add">Adicionar conta</button>
-        <button class="remove" onclick="Remove(11)"><i class="fa-solid fa-trash-can"></i></button>
-    </div>
-</div>
-
-<div class="item" data-key="12">
-  <div class="content">
-      <div class="title">Sumo Natural</div>
-      <div class="price">2.00€</div>
-      <input type="number" class="count" min="1" value="1">
-      <button class="add">Adicionar conta</button>
-      <button class="remove" onclick="Remove(12)"><i class="fa-solid fa-trash-can"></i></button>
-  </div>
-</div>
-
-
-<div class="item" data-key="13">
-  <div class="content">
-      <div class="title">Cerveja</div>
-      <div class="price">1.90€</div>
-      <input type="number" class="count" min="1" value="1">
-      <button class="add">Adicionar conta</button>
-      <button class="remove" onclick="Remove(13)"><i class="fa-solid fa-trash-can"></i></button>
-  </div>
-</div>
-
-<div class="item" data-key="14">
-<div class="content">
-    <div class="title">Vinho Copo</div>
-    <div class="price">2.50€</div>
-    <input type="number" class="count" min="1" value="1">
-    <button class="add">Adicionar conta</button>
-    <button class="remove" onclick="Remove(14)"><i class="fa-solid fa-trash-can"></i></button>
-</div>
-</div>
-
-<div class="item" data-key="15">
-<div class="content">
-  <div class="title">Vinho Garrafa</div>
-  <div class="price">12.00€</div>
-  <input type="number" class="count" min="1" value="1">
-  <button class="add">Adicionar conta</button>
-  <button class="remove" onclick="Remove(15)"><i class="fa-solid fa-trash-can"></i></button>
-</div>
-</div>
-</div>
-
-
-
-  </div>
-  <div class="cart">
-    <div class="name">Pedido</div>
-    <div class="listCart"></div>
-
-    <button class="fecho2">Cancelar</button>
-    <button class="fecho" onclick="myFunction()">Enviar para Cozinha</button>
-    <button class="fecho" id="myBtn">Fechar Conta</button>
-
-
-    <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-        <h1>O valor total do pedido é de: </h1>
-        <br>
-        <span class="close"><button class="fecho2">Cancelar</button></span>
-        <span class="close"><button class="fecho">Pagamento Efetuado!</button></span>
-      
-      </div>
-    
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

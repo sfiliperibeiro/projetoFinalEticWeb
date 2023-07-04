@@ -31,24 +31,19 @@ export default function Home() {
     <br></br>
       <h1>Selecionar Produtos</h1>
       <div className='grid'>
-        <div className='list'>
+        
      
             <ProductRow></ProductRow>
 
-        </div>
+      
 
 
-    <div className='cart'>
-      <div className='name'>Pedido</div>
-      <div className='listCart'>
+
         <MyComponent></MyComponent>
-     
-      </div>
-
-      <br></br>
+    
       <Fecho></Fecho>
 
-    </div>
+
 
 
       </div>

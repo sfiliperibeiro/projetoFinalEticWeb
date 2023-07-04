@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import './home.css';
 
 export default function Fecho() {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +32,6 @@ export default function Fecho() {
   
               <br />
              <h3>O valor total do seu pedido é:</h3>
-           <div className='price'>47.50€</div>
               <br />
               <br />
               <form>
@@ -50,10 +50,12 @@ export default function Fecho() {
         
              
       )}
+
+      <div className='pay'>
        <button className="fecho2">Cancelar</button> 
           <button className="btn"onClick={openModal}>Pagamento</button> 
             <button className='btn' onClick={() => alert('O pedido está a ser feito na cozinha!')}>Enviar para Cozinha</button>      
-      
+      </div>
     </>
   );
 }

@@ -369,3 +369,12 @@ body {
   cursor: pointer;
 }
 
+.pay {
+  width: 100%;
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
+  text-align: right;
+  margin: 0 auto;
+}
+

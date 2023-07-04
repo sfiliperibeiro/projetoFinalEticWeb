@@ -3,28 +3,25 @@ import React, { useEffect } from 'react';
 
 const MyComponent = () => {
   useEffect(() => {
-    const handleItemClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
+    const handleItemClick = (event) => {
+      const target = event.target;
       const item = target.closest('.item');
 
       if (item && target.classList.contains('add')) {
-        const itemNew = item.cloneNode(true) as HTMLElement;
-        let checkIsset = false;
+        const itemNew = item.cloneNode(true);
+        const removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.classList.add('remove');
+        itemNew.appendChild(removeButton);
+        document.querySelector('.listCart')?.appendChild(itemNew);
+      }
+    };
 
-        const listCart = document.querySelectorAll('.cart .item');
-        listCart.forEach((cart) => {
-          if (cart.getAttribute('data-key') === itemNew.getAttribute('data-key')) {
-            checkIsset = true;
-            cart.classList.add('danger');
-            setTimeout(() => {
-              cart.classList.remove('danger');
-            }, 1000);
-          }
-        });
-
-        if (!checkIsset) {
-          document.querySelector('.listCart')?.appendChild(itemNew);
-        }
+    const handleRemoveClick = (event) => {
+      const target = event.target;
+      const item = target.closest('.item');
+      if (item && target.classList.contains('remove')) {
+        item.remove();
       }
     };
 
@@ -33,18 +30,22 @@ const MyComponent = () => {
       item.addEventListener('click', handleItemClick);
     });
 
+    const listCart = document.querySelector('.listCart');
+    if (listCart) {
+      listCart.addEventListener('click', handleRemoveClick);
+    }
+
     return () => {
       list.forEach((item) => {
         item.removeEventListener('click', handleItemClick);
-        
       });
-      
+      if (listCart) {
+        listCart.removeEventListener('click', handleRemoveClick);
+      }
     };
   }, []);
 
-  return (
-    <></>
-  );
+  return <></>;
 };
 
 export default MyComponent;
